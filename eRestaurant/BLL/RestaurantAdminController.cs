@@ -37,6 +37,12 @@ namespace eRestaurant.BLL
 
         public void DeleteWaiter(Waiter item) 
         {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Waiters.Find(item.WaiterID);
+                context.Waiters.Remove(existing);
+                context.SaveChanges();
+            }
         }
         #endregion
 
