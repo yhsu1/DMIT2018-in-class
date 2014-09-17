@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
+    <script src='<%=ResolveUrl("/Scripts/unobtrusive-DMIT-2018.js") %>'></script>
+
     <div class="row col-md-12">
         <h1>Manage Waiters</h1>
     </div>
