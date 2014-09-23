@@ -14,7 +14,7 @@ namespace eRestaurant.BLL
     {
         #region Manage Waiters
         #region Command
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public int AddWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -131,30 +131,55 @@ namespace eRestaurant.BLL
 
         #region Manage Special Events
         #region Command
-        public string AddSpecialEvent(SpecialEvent item)
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void AddSpecialEvent(SpecialEvent item)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation of SpecialEvent data
+                var added = context.SpecialEvents.Add(item);
+                context.SaveChanges();                
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public void UpdateItem(SpecialEvent item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var attached = context.SpecialEvents.Attach(item);
+                var matchingWithExistingValues = context.Entry<SpecialEvent>(attached);
+                matchingWithExistingValues.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
         public void DeleteItem(SpecialEvent item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.SpecialEvents.Find(item.EventCode);
+                context.SpecialEvents.Remove(existing);
+                context.SaveChanges();
+            }
         }
         #endregion
         #region Query
         public List<SpecialEvent> ListAllSpecialEvents()
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.ToList();
+            }
         }
 
         public SpecialEvent GetSpecialEvents(string eventCode)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.Find(eventCode);
+            }
         }
         #endregion
         #endregion
