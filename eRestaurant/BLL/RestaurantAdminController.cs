@@ -2,16 +2,19 @@
 using eRestaurant.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace eRestaurant.BLL
 {
+    [DataObject]
     public class RestaurantAdminController
     {
         #region Manage Waiters
         #region Command
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public int AddWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())

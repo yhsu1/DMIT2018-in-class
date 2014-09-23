@@ -41,5 +41,10 @@ namespace eRestaurant.DAL
             base.OnModelCreating(modelBuilder);
         }
         #endregion
+
+        internal void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
