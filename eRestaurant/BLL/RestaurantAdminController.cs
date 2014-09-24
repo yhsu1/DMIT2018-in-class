@@ -14,7 +14,7 @@ namespace eRestaurant.BLL
     {
         #region Manage Waiters
         #region Command
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int AddWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -26,6 +26,7 @@ namespace eRestaurant.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public void UpdateWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -38,6 +39,7 @@ namespace eRestaurant.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
         public void DeleteWaiter(Waiter item) 
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -50,6 +52,7 @@ namespace eRestaurant.BLL
         #endregion
 
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Waiter> ListAllWaiters()
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -58,6 +61,7 @@ namespace eRestaurant.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Waiter GetWaiter(int waiterId)
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -70,61 +74,119 @@ namespace eRestaurant.BLL
 
         #region Manage Tables
         #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int AddTable(Table item)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation of Table data
+                var added = context.Tables.Add(item);
+                context.SaveChanges();
+                return added.TableID;
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public void UpdateTable(Table item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation
+                var attached = context.Tables.Attach(item);
+                var matchingWithExistingValues = context.Entry<Table>(attached);
+                matchingWithExistingValues.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
         public void DeleteTable(Table item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Tables.Find(item.TableID);
+                context.Tables.Remove(existing);
+                context.SaveChanges();
+            }
         }
 
         #endregion
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Table> ListAllTables()
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Tables.ToList();
+            }
         }
 
-        public Table GetTable(int tableId)
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Table GetTable(int TableId)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Tables.Find(TableId);
+            }
         }
         #endregion
         #endregion
 
         #region Manage Items
         #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int AddItem(Item item)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation of Item data....
+                var added = context.Items.Add(item);
+                context.SaveChanges();
+                return added.ItemID;
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public void UpdateItem(Item item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation
+                var attached = context.Items.Attach(item);
+                var matchingWithExistingValues = context.Entry<Item>(attached);
+                matchingWithExistingValues.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
         public void DeleteItem(Item item)
         {
-
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Items.Find(item.ItemID);
+                context.Items.Remove(existing);
+                context.SaveChanges();
+            }
         }
         #endregion
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Item> ListAllItems()
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.ToList();
+            }
         }
 
-        public Item GetItem(int itemId)
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Item GetItem(int ItemId)
         {
-            throw new NotImplementedException();
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.Find(ItemId);
+            }
         }
         #endregion
         #endregion
@@ -155,7 +217,7 @@ namespace eRestaurant.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete, false)]
-        public void DeleteItem(SpecialEvent item)
+        public void DeleteSpecialEvent(SpecialEvent item)
         {
             using (RestaurantContext context = new RestaurantContext())
             {
@@ -166,6 +228,7 @@ namespace eRestaurant.BLL
         }
         #endregion
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<SpecialEvent> ListAllSpecialEvents()
         {
             using (RestaurantContext context = new RestaurantContext())
@@ -174,6 +237,7 @@ namespace eRestaurant.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public SpecialEvent GetSpecialEvents(string eventCode)
         {
             using (RestaurantContext context = new RestaurantContext())
