@@ -30,22 +30,22 @@
             <asp:TextBox ID="WaiterID" runat="server" Enabled="false"></asp:TextBox>
 
             <asp:Label ID="Label3" runat="server" Text="First Name" AssociatedControlID="FirstName" />
-            <asp:TextBox ID="FirstName" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="FirstName" runat="server"></asp:TextBox>
 
             <asp:Label ID="Label4" runat="server" Text="Last Name" AssociatedControlID="LastName" />
-            <asp:TextBox ID="LastName" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="LastName" runat="server"></asp:TextBox>
 
             <asp:Label ID="Label5" runat="server" Text="Phone" AssociatedControlID="Phone" />
-            <asp:TextBox ID="Phone" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="Phone" runat="server"></asp:TextBox>
 
             <asp:Label ID="Label6" runat="server" Text="Address" AssociatedControlID="Address" />
-            <asp:TextBox ID="Address" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="Address" runat="server"></asp:TextBox>
 
             <asp:Label ID="Label7" runat="server" Text="Hire Date" AssociatedControlID="HireDate" />
-            <asp:TextBox ID="HireDate" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="HireDate" runat="server"></asp:TextBox>
 
             <asp:Label ID="Label8" runat="server" Text="Release Date" AssociatedControlID="ReleaseDate" />
-            <asp:TextBox ID="ReleaseDate" runat="server" Enabled="false"></asp:TextBox>
+            <asp:TextBox ID="ReleaseDate" runat="server"></asp:TextBox>
 
         </fieldset>
 
