@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>bca2d3f5-0a2f-4448-ac37-8194477dc217</ID>
+    <ID>90484823-35fd-487c-8da7-087800aafd13</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>eRestaurant</Database>
@@ -17,27 +17,32 @@ void Main()
 				MenuItems = from item in cat.Items
 							where item.Active
 							orderby item.Description
-							select new
+							select new MenuItem()
 							{
-							Description = item.Description,
-							Price = item.CurrentPrice,
-							Calories = item.Calories,
-							Comment = item.Comment
+								Description = item.Description,
+								Price = item.CurrentPrice,
+								Calories = item.Calories,
+								Comment = item.Comment
 							}
-				};
+			};
 	data.Dump();
 }
 
 // Define other methods and classes here
 public class Category
 {
-	public string Description {	get; set; }
-	public IEnumerable MenuItems { get; set; }
+    public string Description { get;set;}
+	public IEnumerable MenuItems { get;set;}
 }
 public class MenuItem
 {
-	public string Description { get; set; }
-	public decimal Price { get; set; }
-	public int? Calories { get; set; }
-	public string Comment { get; set; }
+	public string Description { get;set;}
+	public decimal Price { get;set;}
+	public int? Calories {get;set;}
+	public string Comment { get;set;}
 }
+
+
+
+
+
