@@ -188,6 +188,9 @@ namespace eRestaurant.BLL
                 return context.Items.Find(ItemId);
             }
         }
+
+        
+
         #endregion
         #endregion
 
@@ -245,6 +248,20 @@ namespace eRestaurant.BLL
                 return context.SpecialEvents.Find(eventCode);
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Reservation> getReservationBySpecialEvent(string eventCode)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var data = from info in context.Reservations
+                           where info.EventCode == eventCode
+                           select info;
+                           
+                return data.ToList();
+            }
+        }
+
         #endregion
         #endregion
     }

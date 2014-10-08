@@ -50,5 +50,18 @@ namespace eRestaurant.BLL
                 return data.ToList();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Item> LookupItemByCategory(int MenuCategoryID)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var data = from infor in context.Items
+                           where infor.MenuCategoryID == MenuCategoryID
+                           select infor;
+                return data.ToList();
+            }
+        }
+
     }
 }
