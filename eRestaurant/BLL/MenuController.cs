@@ -63,5 +63,15 @@ namespace eRestaurant.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<MenuCategory> ListAllCategories()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.MenuCategories.ToList();
+
+            }
+        }
+
     }
 }

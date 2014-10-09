@@ -6,9 +6,9 @@
             <td>
                 <asp:Label ID="Category" runat="server" Text="Category"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:DropDownList ID="CategoryDropDown" runat="server" DataSourceID="CategoryDataSource" DataTextField="Description" DataValueField="MenuItems">
+                <asp:DropDownList ID="CategoryDropDown" runat="server" DataSourceID="CategoryDataSource" DataTextField="Description" DataValueField="MenuCategoryID">
                 </asp:DropDownList>
-                <asp:ObjectDataSource ID="CategoryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategorizedMenuItems" TypeName="eRestaurant.BLL.MenuController"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="CategoryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllCategories" TypeName="eRestaurant.BLL.MenuController"></asp:ObjectDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:LinkButton ID="ViewItem" runat="server">View Items</asp:LinkButton>
             </td>
