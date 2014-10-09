@@ -6,7 +6,7 @@
             <td>
                 <asp:Label ID="Category" runat="server" Text="Category"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:DropDownList ID="CategoryDropDown" runat="server" DataSourceID="CategoryDataSource" DataTextField="Description" DataValueField="Description">
+                <asp:DropDownList ID="CategoryDropDown" runat="server" DataSourceID="CategoryDataSource" DataTextField="Description" DataValueField="MenuItems">
                 </asp:DropDownList>
                 <asp:ObjectDataSource ID="CategoryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategorizedMenuItems" TypeName="eRestaurant.BLL.MenuController"></asp:ObjectDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
