@@ -16,7 +16,8 @@
         <fieldset data-style="inline">
             
             <asp:Label ID="Label1" runat="server" Text="Select Waiter" AssociatedControlID="WaiterDropDown" />
-            <asp:DropDownList ID="WaiterDropDown" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="WaiterDropDown" runat="server" DataSourceID="WaiterDatasource" DataTextField="FullName" DataValueField="WaiterID"></asp:DropDownList>
+            <asp:ObjectDataSource ID="WaiterDatasource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllWaiters" TypeName="eRestaurant.BLL.RestaurantAdminController"></asp:ObjectDataSource>
             <asp:LinkButton ID="ShowWaiter" runat="server" Text="Show Waiter" />
             
         </fieldset>
@@ -55,7 +56,7 @@
         <fieldset data-style="btn">
 
             <asp:LinkButton ID="Add" runat="server" Text="Add Waiter" OnClick="Add_Click" />
-            <asp:LinkButton ID="Update" runat="server" Text="Update Waiter" />
+            <asp:LinkButton ID="Update" runat="server" Text="Update Waiter" OnClick="Update_Click" />
             <asp:LinkButton ID="Delete" runat="server" Text="Delete Waiter" />
             <asp:LinkButton ID="Clear" runat="server" Text="Clear Fields" />
 
