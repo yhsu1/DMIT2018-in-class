@@ -98,7 +98,7 @@ namespace eRestaurant.Entities.DTOs
     public interface IAdHoc
     {
         // An interface has fields, properties and methods
-        string name;
+        //string name;
         // Properties and methods do NOT have an implementation in an interface
         string AsText(int value);
         int Count { get; } // Properties can have a get, set, or both
