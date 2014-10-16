@@ -1,4 +1,4 @@
-﻿using eRestaurant.Entities; // Needed for accessing my Entity classes
+﻿                                                                                                      
 using System;
 using System.Collections.Generic;
 using System.Data.Entity; // Needed for the DbContext base class
