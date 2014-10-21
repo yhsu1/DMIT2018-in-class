@@ -1,4 +1,5 @@
-﻿                                                                                                      
+﻿
+using eRestaurant.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity; // Needed for the DbContext base class
