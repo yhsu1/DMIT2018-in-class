@@ -7,6 +7,7 @@
   </Connection>
 </Query>
 
+// Total Item 
 var results = from info in BillItems
 			  orderby info.Item.MenuCategory.Description, info.Item.Description
 			  select new 
@@ -14,7 +15,8 @@ var results = from info in BillItems
 			  		CategoryDescription = info.Item.MenuCategory.Description,
 					ItemDescription = info.Item.Description,
 					Quantity = info.Quantity,
-					Price = info.SalePrice,
-					Cost = info.UnitCost
+					Price = info.SalePrice * info.Quantity,
+					Cost = info.UnitCost * info.Quantity
 			  };
+results.Count().Dump();
 results.Dump();

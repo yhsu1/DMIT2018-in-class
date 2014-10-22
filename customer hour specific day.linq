@@ -7,7 +7,7 @@
   </Connection>
 </Query>
 
-//How many customer
+//How many customer per hour 
 from info in Bills
 where info.BillDate.Year == 2014
 	&& info.BillDate.Month == 9
